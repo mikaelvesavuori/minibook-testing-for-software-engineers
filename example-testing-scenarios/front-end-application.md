@@ -74,11 +74,11 @@ Visual snapshot tests might be relevant as well, depending on the volatility and
 
 Given that we control none of the backends our most reasonable hope, based on the likely composition of our team, is to add end-to-end tests. Integration tests and contract tests won't be of any real use to us here, unfortunately.
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption><p>Our end-to-end flow could check that external features work as intended. Pure logic should already be covered in unit tests, as always.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/frontend1.jpg" alt=""><figcaption><p>Our end-to-end flow could check that external features work as intended. Pure logic should already be covered in unit tests, as always.</p></figcaption></figure>
 
 Before doing so, we need to check if we have testing endpoints or are allowed to create test transactions so that we know whether or not it's OK that our flow actually goes all the way, or if we need to stop short of that.
 
-<figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption><p>Is it OK to submit our test order? Before continuing we need to know what to do about side effects.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/frontend2.jpg" alt=""><figcaption><p>Is it OK to submit our test order? Before continuing we need to know what to do about side effects.</p></figcaption></figure>
 
 ## Errors need to go to some tool
 

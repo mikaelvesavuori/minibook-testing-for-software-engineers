@@ -8,7 +8,7 @@ description: Boring, predictable code should be the primary output of your job.
 >
 > — Bill Pate, NASA engineer
 
-In the overall concept of quality, you'd probably expect _testing_ to take some form of place. However, if you look at the [Consortium for Information & Software Quality](https://www.it-cisq.org/standards/index.htm) and their wording, there is no testing there. What gives? I think it's pretty easy: **Testing is just about verifying the** [**quality attributes**](https://en.wikipedia.org/wiki/List\_of\_system\_quality\_attributes) **of what we built**.
+In the overall concept of quality, you'd probably expect _testing_ to take some form of place. However, if you look at the [Consortium for Information & Software Quality](https://www.it-cisq.org/standards/index.htm) and their wording, there is no testing there. What gives? I think it's pretty easy: **Testing is just about verifying the** [**quality attributes**](https://en.wikipedia.org/wiki/List_of_system_quality_attributes) **of what we built**.
 
 And who else should do this, in terms of work ethics and competence, than the software engineer who wrote the code?
 
@@ -23,7 +23,7 @@ This is one of the strongest arguments I hold against testers and other professi
 If you don't know what you build and how it should behave, then you will have unclean and/or unclear code. Alas, such code cannot be meaningfully tested; at best you will have a brittle test, meaning it breaks or works on a whim. Such tests are even more dangerous than having no tests as they provide no clear answers, only more "questions".
 
 {% hint style="success" %}
-The [functional programming paradigm](https://www.yld.io/blog/the-not-so-scary-guide-to-functional-programming/) is one way in which we can optimize for highly deterministic systems since it heavily encourages [pure functions](https://en.wikipedia.org/wiki/Pure\_function). We don't need to go quite so far to write software that works intentionally.
+The [functional programming paradigm](https://www.yld.io/blog/the-not-so-scary-guide-to-functional-programming/) is one way in which we can optimize for highly deterministic systems since it heavily encourages [pure functions](https://en.wikipedia.org/wiki/Pure_function). We don't need to go quite so far to write software that works intentionally.
 
 Also, remember that JavaScript (if that's what you are using) is a multi-paradigm language that can [support many of the features of a functional programming language](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes-func.html).
 {% endhint %}
@@ -32,12 +32,12 @@ Nowadays, when pretty much everyone is a cloud engineer, the evolution of _DevOp
 
 This is both good and bad:
 
-* Good because it is an efficiency enabler for the well-versed engineer.
-* Bad because it does require new skills that not all engineers find appealing.
+- Good because it is an efficiency enabler for the well-versed engineer.
+- Bad because it does require new skills that not all engineers find appealing.
 
 Nevertheless, with all of these changes, I would argue that _generally,_ conditions for writing, testing, and deploying good software are rapidly improving.
 
-**Testing to a high, confidence-creating degree should be one of the major parts of an adequate "definition of done".** Anything less will invite making testing and quality-enforcing procedures optional, which to be frank, means they won't get done at all :man\_shrugging:.
+**Testing to a high, confidence-creating degree should be one of the major parts of an adequate "definition of done".** Anything less will invite making testing and quality-enforcing procedures optional, which to be frank, means they won't get done at all :man_shrugging:.
 
 ## No good test without good code
 
@@ -50,16 +50,19 @@ If you want to try them out, you can just paste them into the [TypeScript Playgr
 You'll remember this from the introduction:
 
 {% code title="Basic JavaScript `add` function" %}
+
 ```javascript
 function add(firstNumber, secondNumber) {
   return firstNumber + secondNumber;
 }
 ```
+
 {% endcode %}
 
 With the test being:
 
 {% code title="Minimal test" %}
+
 ```javascript
 const expected = 5;
 const result = add(2, 3);
@@ -67,6 +70,7 @@ const result = add(2, 3);
 if (result === expected) console.log("Test passed!");
 else console.log("Test failed!");
 ```
+
 {% endcode %}
 
 This will be a simple test that outputs 100% test coverage on all aspects: [line, statement, branch, and functions](https://www.atlassian.com/continuous-delivery/software-testing/code-coverage).
@@ -74,11 +78,13 @@ This will be a simple test that outputs 100% test coverage on all aspects: [line
 The above function implementation is naive as it has no verification of the types of `firstNumber` or `secondNumber`. Let's say we use TypeScript, then we could just do:
 
 {% code title="TypeScript version of the `add` function" %}
+
 ```typescript
 function add(firstNumber: number, secondNumber: number) {
   return firstNumber + secondNumber;
 }
 ```
+
 {% endcode %}
 
 Voilá, types in action.
@@ -115,6 +121,7 @@ The check we did here is contextually relevant. For private class methods and "d
 Since we now do check for correctness, let's add a test that checks that it does what it should:
 
 {% code title="Test for improved TS version" %}
+
 ```typescript
 // Add to previous code
 
@@ -134,6 +141,7 @@ const result = nonNumericTest();
 if (result === expected) console.log("Test passed!");
 else console.log("Test failed!");
 ```
+
 {% endcode %}
 
 And it does!
@@ -154,13 +162,13 @@ To be clear: Failing to separate business logic from the Lambda handler (or any 
 
 ## Inversion of control
 
-Of the SOLID principles, perhaps the D ([dependency inversion principle](https://en.wikipedia.org/wiki/Dependency\_inversion\_principle)) offers the most power, albeit maybe not at first glance. By relying on abstractions rather than concretions and providing concrete implementations to our objects we can assemble our systems more Lego-like, making principally every object interchangeable. **If they are interchangeable, they become testable and mockable (if needed)**.
+Of the SOLID principles, perhaps the D ([dependency inversion principle](https://en.wikipedia.org/wiki/Dependency_inversion_principle)) offers the most power, albeit maybe not at first glance. By relying on abstractions rather than concretions and providing concrete implementations to our objects we can assemble our systems more Lego-like, making principally every object interchangeable. **If they are interchangeable, they become testable and mockable (if needed)**.
 
 ## In summary
 
 We saw how TypeScript, compared to JavaScript, enforces strictness and makes the surface error for issues smaller. If you primarily work with another language the takeaway should be that strictness is a great quality and makes writing testable code easier as we let the compiler and language work for us. A smaller surface error with less logic is easier to test and typically relates to most conventional notions of code quality too.
 
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption><p>Various books on better programming, design, and testing.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/books.jpg" alt=""><figcaption><p>Various books on better programming, design, and testing.</p></figcaption></figure>
 
 This is an area that without a doubt leads me to believe that it is only logical that a developer writes their own tests: It makes for a good litmus test of the structure and design of the code, as well as enforces the verification of the functionality according to expectations. Thus, tests help us write better code or at least qualify the code we wrote against some external force.
 

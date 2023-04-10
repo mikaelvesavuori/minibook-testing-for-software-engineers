@@ -4,11 +4,11 @@ description: Some advice for the long road ahead.
 
 # Writing good tests
 
-<figure><img src="../.gitbook/assets/image (10).png" alt=""><figcaption><p>Good tests, like good tools, aren't magic; they are well-composed and well-designed.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/typewriter.jpg" alt=""><figcaption><p>Good tests, like good tools, aren't magic; they are well-composed and well-designed.</p></figcaption></figure>
 
 > People love debating what percentage of which type of tests to write, but it's a distraction. **Nearly zero teams write expressive tests that establish clear boundaries, run quickly & reliably, and only fail for useful reasons. Focus on that instead**.
 >
-> — [Justin Searls](https://twitter.com/searls/status/1393385209089990659?ref\_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E1393385209089990659%7Ctwgr%5Ea83eede86e611eda1bb154efc1b159d956b82f59%7Ctwcon%5Es1\_\&ref\_url=https%3A%2F%2Fmartinfowler.com%2Farticles%2F2021-test-shapes.html)
+> — [Justin Searls](https://twitter.com/searls/status/1393385209089990659?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E1393385209089990659%7Ctwgr%5Ea83eede86e611eda1bb154efc1b159d956b82f59%7Ctwcon%5Es1_&ref_url=https%3A%2F%2Fmartinfowler.com%2Farticles%2F2021-test-shapes.html)
 
 Good tests and good code share a lot of similarities. Well, no surprise given that they both _are code_! If you're a half-decent developer this page should help fill in some of the gaps and questions you might have but take note that if you are already adept at writing semantic and clean code, then that should carry over really well to your tests too.
 
@@ -42,8 +42,8 @@ The closest thing we have to a standard in (unit) testing is the [arrange-act-as
 const expected = 5; // Arrange
 const result = add(2, 3); // Act
 
-if (result === expected) console.log('Test passed!'); // Assert
-else console.log('Test failed!');
+if (result === expected) console.log("Test passed!"); // Assert
+else console.log("Test failed!");
 ```
 
 Following this convention makes your tests readable and logically sound. It's quite possible that you'll have the odd occasion where there is more (messy?) setup that needs to be done, but as long as you follow this pattern and extract any bulky setup code from your test then you're pretty well set.
@@ -80,7 +80,7 @@ Some smart people would say no.
 This article is really good and interesting, having a conversational type of format on [test contra-variance](https://blog.cleancoder.com/uncle-bob/2017/10/03/TestContravariance.html) and what you gain by not using the convention of a test file per class.
 {% endhint %}
 
-I would say: Write tests from the widest unit tests (use cases) first and then fill in additional tests (in separate files, of course) for each class/function/method that has code branches that are not covered by such wider "use case unit tests".  Don't forget to always do negative testing as well!
+I would say: Write tests from the widest unit tests (use cases) first and then fill in additional tests (in separate files, of course) for each class/function/method that has code branches that are not covered by such wider "use case unit tests". Don't forget to always do negative testing as well!
 
 Given that you probably have the possibility to throw some errors in most classes/functions then it's a realistic assumption that you will end up with individual test files for most of your code base. In those files, you should test the difference or delta, i.e. the "missing parts", not everything from scratch, once again. Using this approach means that you don't do excessive and redundant testing, but that you actually fill in bit-by-bit the missing code branches. In total, you will quickly and expediently move to better and better coverage.
 
@@ -88,9 +88,9 @@ Given that you probably have the possibility to throw some errors in most classe
 
 The _farther out_ we are (e.g. testing from the use-cases layer) the coarser-grained our understanding of the system is. That's why I always "fill in the gaps" where branch coverage is not full (or nearly full) in tests that exercise relevant functionality. Typically this would be something like this:
 
-* Tests for use cases -> Behavior focused (general; almost like a unit test-flavored system test)
-* Tests for functions (such as infrastructure utils) -> Behavior-focused (typical unit test scope)
-* Tests for classes (public methods; refactor private methods to utility functions that can be individually tested, if relevant) -> Behavior focused
+- Tests for use cases -> Behavior focused (general; almost like a unit test-flavored system test)
+- Tests for functions (such as infrastructure utils) -> Behavior-focused (typical unit test scope)
+- Tests for classes (public methods; refactor private methods to utility functions that can be individually tested, if relevant) -> Behavior focused
 
 ## What is the test coverage to go for?
 
@@ -100,7 +100,7 @@ Remember that even 100% test coverage does not rule out all logical, meaningful 
 
 `100% test coverage is not the end. It's where we begin.`
 
-Sorry mate, if you expected another answer. :person\_shrugging:
+Sorry mate, if you expected another answer. :person_shrugging:
 
 {% hint style="info" %}
 While the following link concerns [Jest](https://jestjs.io), I find that [this article is good enough to recommend anyway as it gives solid advice on how to actually reach full test coverage](https://tsmx.net/jest-full-code-coverage/) and what to do about situations like "untestable" code lines. Highly recommended!
@@ -112,8 +112,8 @@ While the following link concerns [Jest](https://jestjs.io), I find that [this a
 
 Here’s how my thinking (and feeling!) goes:
 
-* Always document usage! Not documenting at least examples is inexcusable. Give API examples and anything needed for someone to test what you built, no matter how small. And how about you? Will you remember in 12 months, if you look at the code then? Nope. You won’t.
-* In very simple demos I don’t do any tests at all. (There, I wrote it black-on-white). If the scope is very slim, internal or otherwise “safe”, then just skip them.
-* When you do test, test the things that can actually break, not every theoretical combination, or things you know will work (hairy proposition, but again, don’t overdo testing). Your code should ideally behave predictably, which means test cases should not be unending.
-* In small production projects, I might just do a small Node (or \`ts-node\`) script that runs functions/classes and verifies them on a functional level. No need for a big framework.
-* If APIs are needed, I’ll do kind of integration tests with a mock. There’s a lot of nice tooling for this. From using real APIs with super basic [curl](https://medium.com/beadlist/using-curl-for-api-testing-463803304620) to [node-fetch](https://github.com/node-fetch/node-fetch) or [superagent](https://www.npmjs.com/package/superagent) to [mocking APIs with (for example) Jest](https://dev.to/zaklaughton/the-only-3-steps-you-need-to-mock-an-api-call-in-jest-39mb), to [Mock Service Worker](https://mswjs.io) or contract testing using [Quicktype](https://quicktype.io)-generated schemas through [Pact](https://pact.io).
+- Always document usage! Not documenting at least examples is inexcusable. Give API examples and anything needed for someone to test what you built, no matter how small. And how about you? Will you remember in 12 months, if you look at the code then? Nope. You won’t.
+- In very simple demos I don’t do any tests at all. (There, I wrote it black-on-white). If the scope is very slim, internal or otherwise “safe”, then just skip them.
+- When you do test, test the things that can actually break, not every theoretical combination, or things you know will work (hairy proposition, but again, don’t overdo testing). Your code should ideally behave predictably, which means test cases should not be unending.
+- In small production projects, I might just do a small Node (or \`ts-node\`) script that runs functions/classes and verifies them on a functional level. No need for a big framework.
+- If APIs are needed, I’ll do kind of integration tests with a mock. There’s a lot of nice tooling for this. From using real APIs with super basic [curl](https://medium.com/beadlist/using-curl-for-api-testing-463803304620) to [node-fetch](https://github.com/node-fetch/node-fetch) or [superagent](https://www.npmjs.com/package/superagent) to [mocking APIs with (for example) Jest](https://dev.to/zaklaughton/the-only-3-steps-you-need-to-mock-an-api-call-in-jest-39mb), to [Mock Service Worker](https://mswjs.io) or contract testing using [Quicktype](https://quicktype.io)-generated schemas through [Pact](https://pact.io).

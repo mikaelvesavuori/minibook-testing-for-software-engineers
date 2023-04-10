@@ -4,7 +4,7 @@ description: Considering a less technical testing model that I believe is more u
 
 # Confidence-based testing
 
-<figure><img src="../.gitbook/assets/image (9).png" alt=""><figcaption><p>If I remove 20 random lines of code, will you start sweating if I push it to production?</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/testing_meme2jpg" alt=""><figcaption><p>If I remove 20 random lines of code, will you start sweating if I push it to production?</p></figcaption></figure>
 
 > The only test coverage goal that makes any sense is 100%. It’s an asymptotic goal. You’ll likely never get there. But you should never stop trying.
 >
@@ -14,11 +14,11 @@ description: Considering a less technical testing model that I believe is more u
 
 Solid quality engineering combined with rigorous, good tests ensure that you can, among many other things:
 
-* Commit and deploy without a pull request
-* Deploy before leaving on a Friday
-* Be a human being, not always remembering all the details that may break
-* More easily onboard newcomers (say, new hires or open-source contributors) to a project
-* Clearly understand the functional requirements of your software
+- Commit and deploy without a pull request
+- Deploy before leaving on a Friday
+- Be a human being, not always remembering all the details that may break
+- More easily onboard newcomers (say, new hires or open-source contributors) to a project
+- Clearly understand the functional requirements of your software
 
 You gain confidence that unexpected behaviors and regressions are caught and don't slip out. You gain confidence in the code doing what you actually expect it to do. You have a relative guarantee that no (known) surprises should show up and stop you.
 
