@@ -4,7 +4,7 @@ description: Considering a less technical testing model that I believe is more u
 
 # Confidence-based testing
 
-<figure><img src="../.gitbook/assets/testing_meme2jpg" alt=""><figcaption><p>If I remove 20 random lines of code, will you start sweating if I push it to production?</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/testing_meme2.jpg" alt=""><figcaption><p>If I remove 20 random lines of code, will you start sweating if I push it to production?</p></figcaption></figure>
 
 > The only test coverage goal that makes any sense is 100%. It’s an asymptotic goal. You’ll likely never get there. But you should never stop trying.
 >
